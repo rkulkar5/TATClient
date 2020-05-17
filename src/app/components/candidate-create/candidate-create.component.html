@@ -1,0 +1,113 @@
+<nav class="nav nav-pills flex-column flex-sm-row">
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/candidates-list" [state]="{username:this.userName}" routerLinkActive="active">Manage Candidates</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/manage-questionbank"routerLinkActive="active">Manage Question Bank</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/testconfig-add" routerLinkActive="active">Manage Metadata</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/view-testresults"routerLinkActive="active">View Test Results</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/login-component" routerLinkActive="active">Logout</a>
+</nav>
+<br><br>
+<div class="float-right text-right">
+  <a routerLink="/candidates-list" [state]="{username:this.userName}" routerLinkActive="active">View Candidate</a> &nbsp;&nbsp;
+  <a routerLink="/create-candidate" [state]="{username:this.userName}" routerLinkActive="active">Add Candidate</a> &nbsp;&nbsp;
+</div>
+<h4 class="my-0 mr-md-auto font-weight-normal">Create Candidate</h4>
+<div class="row justify-content-left">
+  <div class="col-lg-20 register-employee">
+    <!-- form card register -->
+    <div class="card-body">
+      <form [formGroup]="candidateForm" (ngSubmit)="onSubmit()" >
+        <div class="form-group row">
+          <label for="inputName" class="col-sm-4 col-form-label">Name</label>
+          <div class="col-sm-8">
+          <input class="form-control" type="text" formControlName="employeeName" id="inputName" [ngClass]="{ 'is-invalid': submitted && myForm.employeeName.errors }">
+            <div *ngIf="submitted && myForm.employeeName.errors" class="invalid-feedback">
+              <div *ngIf="myForm.employeeName.errors.required">Name is required</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label">Email</label>
+          <div class="col-sm-8">
+          <input class="form-control" type="text" formControlName="email" id="inputEmail3" [ngClass]="{ 'is-invalid': submitted && myForm.email.errors }">
+            <div *ngIf="submitted && myForm.email.errors" class="invalid-feedback">
+              <div *ngIf="myForm.email.errors.required">Email is required</div>
+              <div *ngIf="myForm.email.errors.pattern">Invalid Email</div>
+            </div>
+          </div>
+          <div class="col-sm-6"><i><b><font style="font-size:12px">[This field is used as username.]</font></b></i></div>
+
+        </div>
+
+        <div class="form-group row">
+          <label for="inputBand3" class="col-sm-4 col-form-label">Band</label>
+          <div class="col-sm-8">
+          <select class="custom-select form-control" (change)="updateBandProfile($event.target.value)"
+                  formControlName="band" id="inputBand3" [ngClass]="{ 'is-invalid': submitted && myForm.band.errors }">
+            <option value="">Choose...</option>
+            <option *ngFor="let band of Band" value="{{band.band}}">{{band.band}}
+            </option>
+          </select>
+            <div *ngIf="submitted && myForm.band.errors" class="invalid-feedback">
+              <div *ngIf="myForm.band.errors.required">Band is required</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="inputJRSS3" class="col-sm-4 col-form-label">JRSS</label>
+          <div class="col-sm-8">
+          <select class="custom-select form-control" (change)="updateJrssProfile($event.target.value)"
+                  formControlName="JRSS" id="inputJRSS3" [ngClass]="{ 'is-invalid': submitted && myForm.JRSS.errors }"> 
+            <option value="">Choose...</option>
+            <option *ngFor="let jrss of JRSS" value="{{jrss.jrss}}">{{jrss.jrss}}
+            </option>
+          </select>
+            <div *ngIf="submitted && myForm.JRSS.errors" class="invalid-feedback">
+              <div *ngIf="myForm.JRSS.errors.required">JRSS is required</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputSkill3" class="col-sm-4 col-form-label">Technology Stream</label>
+          <div class="col-sm-8">
+          <select multiple class="custom-select form-control" id="inputSkill3" formControlName="technologyStream" [ngClass]="{ 'is-invalid': submitted && myForm.technologyStream.errors }">
+              <option value="" disabled>Choose technology stream</option>
+              <option *ngFor="let data of technologyStream" [ngValue]="data" >{{data.value}}</option>
+           </select> 
+            <div *ngIf="submitted && myForm.technologyStream.errors" class="invalid-feedback">
+            <div *ngIf="myForm.technologyStream.errors.required">Technology Stream is required</div>
+            </div>      
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="inputMobile3" class="col-sm-4 col-form-label">Mobile No</label>
+          <div class="col-sm-8">
+          <input class="form-control" type="text" formControlName="phoneNumber" id="inputMobile3" [ngClass]="{ 'is-invalid': submitted && myForm.phoneNumber.errors }" maxlength="10" minlength="10">
+            <div *ngIf="submitted && myForm.phoneNumber.errors" class="invalid-feedback">
+              <div *ngIf="myForm.phoneNumber.errors.required">Phone Number is required</div>
+              <div *ngIf="myForm.phoneNumber.errors.pattern">Invalid Phone Number</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="inputDOJ3" class="col-sm-4 col-form-label">Date of Joining</label>
+          <div class="col-sm-8">
+          <input class="form-control" type="date" formControlName="dateOfJoining" id="inputDOJ3" [ngClass]="{ 'is-invalid': submitted && myForm.dateOfJoining.errors }">
+            <div *ngIf="submitted && myForm.dateOfJoining.errors" class="invalid-feedback">
+              <div *ngIf="myForm.dateOfJoining.errors.required">Date Of Joining is required</div>
+            </div>
+          </div>
+        </div>
+          
+        <div class="form-group">
+          <button class="btn btn-success btn-lg btn-block" type="submit">Register</button>
+        </div>
+      </form>
+
+    </div>
+  </div><!-- form card register -->
+</div>

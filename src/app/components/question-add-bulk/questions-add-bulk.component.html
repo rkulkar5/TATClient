@@ -1,0 +1,25 @@
+<nav class="nav nav-pills flex-column flex-sm-row">
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/candidates-list" [state]="{username:this.userName}" routerLinkActive="active">Manage Candidates</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/manage-questionbank" routerLinkActive="active">Manage Question Bank</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/testconfig-add" routerLinkActive="active">Manage Metadata</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/view-testresults"routerLinkActive="active">View Test Results</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/login-component" routerLinkActive="active">Logout</a>
+</nav>
+<br><br>
+<div class="float-right text-center">
+  <a routerLink="/manage-questionbank" routerLinkActive="active">Add Question</a> &nbsp;&nbsp;
+  <a routerLink="/manage-questionbank-bulk" routerLinkActive="active">Add Bulk Question</a>  &nbsp;&nbsp;
+</div>
+<br><br>
+<div class="row justify-content-center">
+<p><b>Select a .XLSX file for Bulk Upload of Questions</b></p>
+</div> 
+<div class="row justify-content-center">    
+  <input type="file" (change)="addfile($event)" [(ngModel)]="uploadFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" size="50">
+  <button class="btn btn-success btn-lg" (click)="bulkUploadFile()">Upload File</button>
+</div>
+<br>
+<div class="row justify-content-center">
+  <p><b>{{ bulkUploadQuestions }} out of {{ totalBulkQuestions }} questions uploaded</b></p>
+</div>
+

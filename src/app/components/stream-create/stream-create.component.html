@@ -1,0 +1,65 @@
+<nav class="nav nav-pills flex-column flex-sm-row">
+    <a class="flex-sm-fill text-sm-center nav-link" routerLink="/candidates-list" [state]="{username:this.userName}" routerLinkActive="active">Manage Candidates</a>
+    <a class="flex-sm-fill text-sm-center nav-link" routerLink="/manage-questionbank"routerLinkActive="active">Manage Question Bank</a>
+    <a class="flex-sm-fill text-sm-center nav-link" routerLink="/testconfig-add" routerLinkActive="active">Manage Metadata</a>
+    <a class="flex-sm-fill text-sm-center nav-link" routerLink="/login-component" routerLinkActive="active">Logout</a>
+  </nav>
+  <br><br>
+  <div class="float-right text-center">
+    <a routerLink="/jrss-create" routerLinkActive="active">JRSS</a> &nbsp;&nbsp;
+    <a routerLink="/stream-create" routerLinkActive="active">Stream</a>  &nbsp;&nbsp;
+    <a routerLink="/testconfig-add" routerLinkActive="active">TestConfig</a>
+  </div>
+  <br><br>
+  <div class="row justify-content-center">
+    <div class="col-md-8 register-employee">
+      <h4 class="my-0 mr-md-auto font-weight-normal">Create Technolgy Stream</h4>
+      <br/>
+      <!-- form Test Config -->
+      <div class="card-body">
+        <form [formGroup]="streamCreateForm" (ngSubmit)="onSubmit()">
+            <div class="form-group row">
+                <label for="inputJRSS3" class="col-sm-4 col-form-label">JRSS</label>
+                <div class="col-sm-8">
+                <select class="custom-select form-control" (change)="updateJrssProfile($event.target.value)"
+                        formControlName="JRSS" id="inputJRSS3" [ngClass]="{ 'is-invalid': submitted && myForm.JRSS.errors }"> 
+                  <option value="">Choose...</option>
+                  <option *ngFor="let jrss of JRSS" value="{{jrss.jrss}}">{{jrss.jrss}}
+                  </option>
+                </select>
+                  <div *ngIf="submitted && myForm.JRSS.errors" class="invalid-feedback">
+                    <div *ngIf="myForm.JRSS.errors.required">JRSS is required</div>
+                  </div>
+                </div>
+              </div>
+  
+          <div class="form-group row">
+            <label for="inputTechnologyStream" class="col-sm-4 col-form-label">Technology Stream</label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text" formControlName="technologyStream" id="inputTechnologyStream" [ngClass]="{ 'is-invalid': submitted && myForm.technologyStream.errors }" maxlength="50" minlength="1">
+              <div *ngIf="submitted && myForm.technologyStream.errors" class="invalid-feedback">
+                <div *ngIf="myForm.technologyStream.errors.required">Tech Stream is required</div>
+                <div *ngIf="myForm.technologyStream.errors.pattern">Enter a valid Tech Stream</div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-group" class="text-center" style="width: 100px">
+            <button class="btn btn-success btn-lg btn-block" type="submit">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <div class="container">
+    <!-- No data message -->
+    <!--<p *ngIf="TestConfigs.length <= 0" class="no-data text-center">There are no records added yet!</p>-->
+  
+    <!-- Test Config list -->
+    
+  </div>
+  
+  
+  

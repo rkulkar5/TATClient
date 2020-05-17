@@ -1,0 +1,140 @@
+<nav class="nav nav-pills flex-column flex-sm-row">
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/candidates-list" [state]="{username:this.userName}" routerLinkActive="active">Manage Candidates</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/manage-questionbank"routerLinkActive="active">Manage Question Bank</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/testconfig-add" routerLinkActive="active">Manage Metadata</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/view-testresults"routerLinkActive="active">View Test Results</a>
+  <a class="flex-sm-fill text-sm-center nav-link" routerLink="/login-component" routerLinkActive="active">Logout</a>
+</nav>
+<br><br>
+<div class="float-right text-center">
+  <a routerLink="/manage-questionbank" routerLinkActive="active">Add Question</a> &nbsp;&nbsp;
+  <a routerLink="/manage-questionbank-bulk" routerLinkActive="active">Add Bulk Question</a>  &nbsp;&nbsp;
+</div>
+<br><br>
+<div class="row justify-content-center">
+  <div class="col-md-8 register-employee">
+  <!-- form card register -->
+  <div class="card-body">
+    <form [formGroup]="questionForm" (ngSubmit)="onSubmit()" >
+    <p style="color:red;">*All fields are mandatory</p>
+    <div class="form-group row">
+      <label for="inputJRSS" class="col-sm-4 col-form-label">JRSS</label>
+      <div class="col-sm-8">
+      <select class="custom-select form-control" (change)="updateJRSSProfile($event.target.value)"
+          formControlName="jrss" id="inputJRSS" [ngClass]="{ 'is-invalid': !formReset && submitted && myForm.jrss.errors }">
+      <option value="">Choose...</option>
+      <option *ngFor="let jrss of JRSS" value="{{jrss.jrss}}">{{jrss.jrss}}
+      </option>
+      </select>
+      <div *ngIf="!formReset && submitted && myForm.jrss.errors" class="invalid-feedback">
+        <div *ngIf="myForm.jrss.errors.required">JRSS is required</div>
+      </div>
+      </div>
+    </div>
+
+      <div class="form-group row">
+        <label for="inputTechnologyStream" class="col-sm-4 col-form-label">Technology Stream</label>
+        <div class="col-sm-8">
+          <select class="custom-select form-control" (change)="updateTechnologyStream($event.target.value)"
+                  formControlName="technologyStream" id="inputTechnologyStream" [ngClass]="{ 'is-invalid': !formReset && submitted && myForm.technologyStream.errors }">
+            <option value="">Choose...</option>
+            <option *ngFor="let data of technologyStream" value="{{data.value}}">{{data.value}}
+            </option>
+          </select>
+          <div *ngIf="!formReset && submitted && myForm.technologyStream.errors" class="invalid-feedback">
+            <div *ngIf="myForm.technologyStream.errors.required">Technology Stream is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+    <label for="inputQuestionType" class="col-sm-4 col-form-label">Question Type</label>
+    <div class="col-sm-8">
+      <select class="custom-select form-control" (change)="updateQuestionTypes($event.target.value)"
+           formControlName="questionType" id="inputQuestionType" [ngClass]="{ 'is-invalid': !formReset && submitted && myForm.questionType.errors }">
+      <option value="">Choose...</option>
+      <option *ngFor="let questionType of QuestionTypes" value="{{questionType}}">{{questionType}}
+      </option>
+      </select>
+      <div *ngIf="!formReset && submitted && myForm.questionType.errors" class="invalid-feedback">
+      <div *ngIf="myForm.questionType.errors.required">Choose QuestionType</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="form-group row">
+    <label for="inputVerify3" class="col-sm-4 col-form-label">Question</label>
+    <div class="col-sm-8">
+      <textarea class="form-control" type="textarea" rows="5" cols="50"  formControlName="question" [ngClass]="{ 'is-invalid': !formReset && submitted && myForm.question.errors }">
+      </textarea>
+      <!-- error -->
+      <div *ngIf="!formReset && submitted && myForm.question.errors" class="invalid-feedback">
+       <div *ngIf="myForm.question.errors.required">Enter your Question</div>
+      </div>
+    </div>
+    </div>
+    <div class="form-group row" >
+    <div class="col-sm-8"></div>
+    <label for="inputVerify3" class="col-sm-4 col-form-label" ><b>Select correct Answer here</b></label>
+    </div>
+    <div class="form-group row" >
+    <label for="inputVerify3" class="col-sm-4 col-form-label">Option 1</label>
+    <div class="col-sm-6">
+      <input class="form-control" type="text"  formControlName="option1" [ngClass]="{ 'is-invalid': !formReset && submitted && myForm.option1.errors }">
+    <!-- error -->
+    <div *ngIf="!formReset && submitted && myForm.option1.errors"  class="invalid-feedback" >
+      <div *ngIf="myForm.option1.errors.required">Enter Option1</div>
+    </div>
+    </div>
+    <div>
+      <input class="form-control" type="checkbox" formControlName="option1checkbox" style="width: 70px">
+    </div>
+    </div>
+    <div class="form-group row" >
+    <label for="inputVerify3" class="col-sm-4 col-form-label">Option 2</label>
+    <div class="col-sm-6">
+      <input class="form-control" type="text"  formControlName="option2" [ngClass]="{ 'is-invalid': !formReset && submitted && myForm.option2.errors }">
+      <!-- error -->
+      <div *ngIf="!formReset && submitted && myForm.option2.errors"  class="invalid-feedback" >
+      <div *ngIf="myForm.option2.errors.required">Enter Option2</div>
+      </div>
+    </div>
+    <div>
+      <input class="form-control" type="checkbox" formControlName="option2checkbox" style="width: 70px">
+    </div>
+    </div>
+    <div class="form-group row" >
+    <label for="inputVerify3" class="col-sm-4 col-form-label">Option 3</label>
+    <div class="col-sm-6">
+      <input class="form-control" type="text"  formControlName="option3" [ngClass]="{ 'is-invalid': !formReset && submitted && myForm.option3.errors }">
+      <!-- error -->
+      <div *ngIf="!formReset && submitted && myForm.option3.errors"  class="invalid-feedback" >
+      <div *ngIf="myForm.option3.errors.required">Enter Option3</div>
+      </div>
+    </div>
+    <div>
+      <input class="form-control" type="checkbox" formControlName="option3checkbox" style="width: 70px">
+    </div>
+    </div>
+    <div class="form-group row" >
+    <label for="inputVerify3" class="col-sm-4 col-form-label">Option 4</label>
+    <div class="col-sm-6">
+      <input class="form-control" type="text"  formControlName="option4" [ngClass]="{ 'is-invalid': !formReset && submitted && myForm.option4.errors }">
+      <!-- error -->
+      <div *ngIf="!formReset && submitted && myForm.option4.errors"  class="invalid-feedback" >
+      <div *ngIf="myForm.option4.errors.required">Enter Option4</div>
+      </div>
+    </div>
+    <div>
+      <input class="form-control" type="checkbox" formControlName="option4checkbox" style="width: 70px">
+    </div>
+    </div>
+    <div class="form-group">
+    <button class="btn btn-success btn-lg btn-block" type="submit">Add Question</button>
+    </div>
+  </form>
+
+  </div>
+</div><!-- form card register -->
+</div>
+
