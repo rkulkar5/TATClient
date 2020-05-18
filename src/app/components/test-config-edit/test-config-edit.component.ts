@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { TestConfigService } from './../../service/testconfig.service';
 import { ApiService } from './../../service/api.service';
-import { TestConfig } from './../../model/TestConfig';
+import { TestConfig } from './../../model/testConfig';
 import { browserRefresh } from '../../app.component';
 
 @Component({
