@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { ApiService } from './../../service/api.service';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Question } from 'src/app/model/Questions';
+import { Question } from 'src/app/model/questions';
 import { ResourceLoader } from '@angular/compiler';
 import * as XLSX from 'xlsx';
 
