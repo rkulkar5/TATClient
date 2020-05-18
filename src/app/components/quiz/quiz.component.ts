@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { Question } from './../../model/Questions';
-import { UserAnswer } from './../../model/UserAnswer';
+import { UserAnswer } from './../../model/userAnswer';
 import { QuizService } from './../../components/quiz/quiz.service';
 import { ApiService } from './../../service/api.service';
 
