@@ -1,4 +1,4 @@
-import { Band } from './../../model/Band';
+import { Band } from './../../model/band';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from './../../service/api.service';
