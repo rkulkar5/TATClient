@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, NgZone } from '@angular/core';
-import { Question } from './../../model/Questions';
+import { Question } from './../../model/questions';
 import { UserAnswer } from './../../model/userAnswer';
 import { QuizService } from './../../components/quiz/quiz.service';
 import { ApiService } from './../../service/api.service';
