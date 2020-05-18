@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { ApiService } from './../../service/api.service';
-import { Candidate } from './../../model/Candidate';
+import { Candidate } from './../../model/candidate';
 import { UserDetails } from './../../model/userDetails';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
