@@ -1,4 +1,4 @@
-import { Candidate } from './../../model/Candidate';
+import { Candidate } from './../../model/candidate';
 import { UserDetails } from './../../model/userDetails'
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
