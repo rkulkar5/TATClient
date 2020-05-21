@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 export class TestConfigService {
 
- baseUri:string = 'http://localhost:4000/api/testConfig';
+ baseUri:string = 'https://tatapi.mybluemix.net/api/testConfig';
  headers = new HttpHeaders().set('Content-Type', 'application/json');
 
  constructor(private http: HttpClient) { }
