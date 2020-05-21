@@ -9,11 +9,11 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 export class ApiService {
 
-  baseUri:string = 'http://localhost:4000/api';
-  userResultUri:string = 'http://localhost:4000/result';
-  baseloginUri:string = 'http://localhost:4000/api/login';
-  baseBandUri:string = 'http://localhost:4000/api/band';
-  baseJrssUri:string = 'http://localhost:4000/api/jrss';
+  baseUri:string = 'https://tatapi.mybluemix.net/api';
+  userResultUri:string = 'https://tatapi.mybluemix.net/result';
+  baseloginUri:string = 'https://tatapi.mybluemix.net/api/login';
+  baseBandUri:string = 'https://tatapi.mybluemix.net/api/band';
+  baseJrssUri:string = 'https://tatapi.mybluemix.net/api/jrss';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
