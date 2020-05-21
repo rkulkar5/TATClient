@@ -10,8 +10,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 export class QuizService {
 
- baseUri:string = 'http://localhost:4000/api/quiz';
- userAnswerUri:string = 'http://localhost:4000/api/userAnswer';
+ baseUri:string = 'https://tatapi.mybluemix.net/api/quiz';
+ userAnswerUri:string = 'https://tatapi.mybluemix.net/api/userAnswer';
  headers = new HttpHeaders().set('Content-Type', 'application/json');
 
  constructor(private http: HttpClient) { }
